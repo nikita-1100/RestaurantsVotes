@@ -15,11 +15,11 @@ import java.time.LocalDate;
 @ToString
 @Data
 @Table(name="menus", uniqueConstraints = {
-        @UniqueConstraint( columnNames = { "restaurant_id", "dish_name", "date" } ) })
+        @UniqueConstraint( columnNames = { "restaurant_name", "dish_name", "date" } ) })
 public class Menu extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id", nullable = false)
+    @JoinColumn(name = "restaurant_name", nullable = false)
     private Restaurant restaurant;
 
     @Column(name = "dish_name")

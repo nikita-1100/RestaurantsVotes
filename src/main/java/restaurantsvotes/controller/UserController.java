@@ -3,10 +3,15 @@ package restaurantsvotes.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import restaurantsvotes.dto.DateDto;
+import restaurantsvotes.dto.VoteDto;
+import restaurantsvotes.entity.Menu;
+import restaurantsvotes.entity.Role;
 import restaurantsvotes.entity.User;
-import restaurantsvotes.repository.UserJpaRepository;
-import restaurantsvotes.service.UserService;
+import restaurantsvotes.repository.MenuJpaRepository;
+import restaurantsvotes.service.VoteService;
 
 import java.util.List;
 
@@ -16,21 +21,27 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private VoteService voteService;
 
-    @PostMapping("/create")
-    public HttpStatus create(@RequestBody User user){
-        userService.saveToBD(user);
+    @Autowired
+    private MenuJpaRepository menuRepo;
+
+    @PostMapping("/vote")
+    public HttpStatus vote(@RequestBody VoteDto voteDto, @AuthenticationPrincipal User user){
+        voteDto.setUser(user);
+        voteService.save(voteDto);
         return HttpStatus.CREATED;
     }
 
-    @GetMapping()
-    public List<User> getAll(){
-        return userService.getAll();
+    @GetMapping("/menu")
+    public List<Menu> getMenuByDate(DateDto dateDto){
+        return menuRepo.findMenuByDate(dateDto.getDate());
     }
 
-    @GetMapping("/{id}")
-    public User get(@PathVariable Integer id){
-        return userService.get(id);
+    @GetMapping("/test")
+    public String test(@AuthenticationPrincipal User user){
+        return "User controller current user: "+ user.getName()
+                + (user.getRoles().contains(Role.ADMIN)?" role:ADMIN":" role:USER");
     }
+
 }
