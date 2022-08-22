@@ -1,3 +1,9 @@
+INSERT INTO users(name, password)
+VALUES ('admin', '$2a$10$DGgPSMGa5Bfpz7YEs4Ybbepf9NZ/N9QjDbGm3n6b.SgtzufUJSkta'),
+       ('user','$2a$10$/WQBqR8Q6OL81Nkzdt2J2.PLO17NjCXhX.L3yLmQk5nArA/MK..Oi');
+
+INSERT INTO user_role(user_id, role) VALUES (1,'ADMIN');
+
 INSERT INTO restaurants(name)
 VALUES ('Tokio city'),
        ('Eurasia'),
@@ -22,19 +28,6 @@ VALUES ('Tokio city', 'chicken poke', 289, '2022-08-01'),
        ('Mamaroma', 'salmon with vegetables', 460, '2022-08-01'),
        ('Mamaroma', 'homemade vine', 165, '2022-08-01');
 
-
-
--- INSERT INTO votes(user_id,date,restaurant_name)INSERT INTO votes(user_id,date,restaurant_name)
--- VALUES (1,'2022-08-01','Tokio city'),
---        (1,'2022-08-02','Eurasia');
--- VALUES (2,'2022-08-01','Tokio city'),
---        (3,'2022-08-01','Eurasia'),
---        (4,'2022-08-01','Kebab-24'),
---        (5,'2022-08-01','Kebab-24'),
---        (6,'2022-08-01','Mamaroma'),
---        (7,'2022-08-01','Tokio city'),
---        (8,'2022-08-01','Tokio city'),
---        (9,'2022-08-01','Eurasia');
 
 
 

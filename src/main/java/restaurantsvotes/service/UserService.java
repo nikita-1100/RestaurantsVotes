@@ -68,24 +68,3 @@ public class UserService implements UserDetailsService {
 
 }
 
-//@Service
-//public class UserService {
-//    @Autowired
-//    private UserJpaRepository userJpaRepository;
-//
-//
-//    @Transactional
-//    public void saveToBD(User user) {
-//        userJpaRepository.save(user);
-//    }
-//
-//
-//    public List<User> getAll() {
-//        return userJpaRepository.findAll();
-//    }
-//
-//
-//    public User get(Integer id) {
-//        return userJpaRepository.findById(id).orElseThrow();
-//    }
-//}

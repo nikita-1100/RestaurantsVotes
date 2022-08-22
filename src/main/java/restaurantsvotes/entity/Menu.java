@@ -1,6 +1,7 @@
 package restaurantsvotes.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "new"})
 @Table(name="menus", uniqueConstraints = {
         @UniqueConstraint( columnNames = { "restaurant_name", "dish_name", "date" } ) })
 public class Menu extends BaseEntity{
