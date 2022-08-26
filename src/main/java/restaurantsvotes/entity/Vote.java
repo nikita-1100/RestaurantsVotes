@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @ToString
 @Data
-@Table(name="votes", uniqueConstraints = {
+@Table(name="vote", uniqueConstraints = {
         @UniqueConstraint( columnNames = { "user_id", "date" } ) })
 
 

@@ -13,8 +13,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Data
 public class VoteDto {
-    //private Integer userId;
     private User user;
-    private LocalDate date;
     private String restaurantName;
 }

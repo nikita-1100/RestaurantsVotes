@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "restaurants")
+@Table(name = "restaurant")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "new"})
 @Getter
 @Setter

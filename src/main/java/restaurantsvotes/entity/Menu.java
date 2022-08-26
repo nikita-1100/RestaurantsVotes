@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @ToString
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "new"})
-@Table(name="menus", uniqueConstraints = {
+@Table(name="menu", uniqueConstraints = {
         @UniqueConstraint( columnNames = { "restaurant_name", "dish_name", "date" } ) })
 public class Menu extends BaseEntity{
 
@@ -25,7 +25,7 @@ public class Menu extends BaseEntity{
     private Restaurant restaurant;
 
     @Column(name = "dish_name")
-    private String dishname;
+    private String dishName;
 
     @Column(name="price")
     private Integer price;

@@ -18,7 +18,4 @@ public class RestaurantController {
         restaurantRepo.save(restaurant);
         return HttpStatus.CREATED;
     }
-
-
-
 }

@@ -2,6 +2,7 @@ package restaurantsvotes.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import restaurantsvotes.dto.DateDto;
@@ -10,29 +11,29 @@ import restaurantsvotes.entity.Vote;
 import restaurantsvotes.repository.RestaurantJpaRepository;
 import restaurantsvotes.repository.VoteJpaRepository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class VoteService {
-
     private final VoteJpaRepository voteJpaRepository;
     private final RestaurantJpaRepository restaurantRepo;
 
     @Transactional
-    public void save(VoteDto voteDto) {
+    public HttpStatus save(VoteDto voteDto) {
         Vote vote = new Vote();
         vote.setUser(voteDto.getUser());
-        vote.setDate(voteDto.getDate());
+        vote.setRestaurant(restaurantRepo.findById(voteDto.getRestaurantName()).orElseThrow());
+        vote.setDate(LocalDate.now());
 
-        if (voteDto.getDate().isAfter(LocalDateTime.now().toLocalDate())){
-                vote.setRestaurant(restaurantRepo.findById(voteDto.getRestaurantName()).orElseThrow());
-                if (voteJpaRepository.findByUserAndDate(voteDto.getUser(),voteDto.getDate())==null){
-                voteJpaRepository.save(vote);
-            } else {
-                voteJpaRepository.updateVote(vote.getRestaurant(),vote.getUser(),vote.getDate());
-            }
-        }
+        if (LocalDateTime.now().getHour()>23)
+            return HttpStatus.CONFLICT;
+        if (voteJpaRepository.findByUserAndDate(voteDto.getUser(),LocalDate.now())==null)
+            voteJpaRepository.save(vote);
+        else
+            voteJpaRepository.updateVote(vote.getRestaurant(),vote.getUser(),vote.getDate());
+        return HttpStatus.CREATED;
     }
 
     public String getRestaurantForDate(DateDto date) {

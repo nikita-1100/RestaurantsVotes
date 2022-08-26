@@ -15,6 +15,7 @@
     <description>RestaurantsVotes</description>
     <properties>
         <java.version>17</java.version>
+        <springdoc.version>1.6.9</springdoc.version>
     </properties>
     <dependencies>
 
@@ -26,9 +27,22 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mustache</artifactId>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-security</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+
+
         <!-- -Добавил руками		-->
 
         <dependency>

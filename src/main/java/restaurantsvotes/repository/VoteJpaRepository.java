@@ -13,10 +13,10 @@ import java.time.LocalDate;
 @Repository
 public interface VoteJpaRepository extends JpaRepository<Vote,Integer> {
     String winnerInDateSqlQuery = "select name " +
-            "from restaurants " +
+            "from restaurant " +
             "where name in " +
                 "(select restaurant_name " +
-                "from votes " +
+                "from vote " +
                 "where date=(:date) " +
                 "group by restaurant_name " +
                 "order by count(restaurant_name) desc " +
