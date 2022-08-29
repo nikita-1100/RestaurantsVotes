@@ -2,6 +2,7 @@ package restaurantsvotes.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ public class MenuController {
     }
 
     @PostMapping("/admin/add-menu")
+    @CacheEvict(value = "menu", allEntries = true)
     public HttpStatus addMenu(@RequestBody Menu menu){
         menuRepo.save(menu);
         return HttpStatus.CREATED;

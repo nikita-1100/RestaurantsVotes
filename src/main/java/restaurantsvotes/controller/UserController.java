@@ -1,6 +1,7 @@
 package restaurantsvotes.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import java.util.Set;
 public class UserController {
     private final UserService userService;
     @PostMapping("admin/registration")
+    @CacheEvict(value="users", allEntries = true)
     public void addUser(@RequestBody User user) {
         Set<Role> roles = new HashSet<>();
         roles.add(user.getUsername().contains("_adm")?Role.ADMIN:Role.USER);

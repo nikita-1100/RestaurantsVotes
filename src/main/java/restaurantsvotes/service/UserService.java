@@ -19,8 +19,8 @@ import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
 
-    @PersistenceContext
-    private EntityManager em;
+//    @PersistenceContext
+//    private EntityManager em;
 
     @Autowired
     UserJpaRepository userRepository;
@@ -41,14 +41,14 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public User findUserById(int userId) {
-        Optional<User> userFromDb = userRepository.findById(userId);
-        return userFromDb.orElse(new User());
-    }
-
-    public List<User> allUsers() {
-        return userRepository.findAll();
-    }
+//    public User findUserById(int userId) {
+//        Optional<User> userFromDb = userRepository.findById(userId);
+//        return userFromDb.orElse(new User());
+//    }
+//
+//    public List<User> allUsers() {
+//        return userRepository.findAll();
+//    }
 
     public boolean saveUser(User user) {
         User userFromDB = userRepository.findByName(user.getUsername());
@@ -62,9 +62,9 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-    public User get(Integer id) {
-        return userRepository.findById(id).orElseThrow();
-    }
+//    public User get(Integer id) {
+//        return userRepository.findById(id).orElseThrow();
+//    }
 
 }
 
