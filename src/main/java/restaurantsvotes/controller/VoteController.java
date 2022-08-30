@@ -18,14 +18,14 @@ public class VoteController {
 
     private final VoteService voteService;
 
-    @PostMapping("/user/vote")
+    @PostMapping("/user/votes")
     public HttpStatus vote(@RequestBody VoteDto voteDto, @AuthenticationPrincipal User user){
         voteDto.setUser(user);
         voteService.save(voteDto);
         return HttpStatus.CREATED;
     }
 
-    @GetMapping("/admin/winnerInDate")
+    @GetMapping("/admin/votes/winner-restaurant")
     public String getVotes(@RequestBody DateDto date){
         return voteService.getRestaurantForDate(date);
     }
