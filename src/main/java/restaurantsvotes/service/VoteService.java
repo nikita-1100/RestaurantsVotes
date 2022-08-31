@@ -3,10 +3,14 @@ package restaurantsvotes.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import restaurantsvotes.dto.DateDto;
 import restaurantsvotes.dto.VoteDto;
+import restaurantsvotes.entity.User;
 import restaurantsvotes.entity.Vote;
 import restaurantsvotes.repository.RestaurantJpaRepository;
 import restaurantsvotes.repository.VoteJpaRepository;
@@ -23,7 +27,7 @@ public class VoteService {
     @Transactional
     public HttpStatus save(VoteDto voteDto) {
         Vote vote = new Vote();
-        vote.setUser(voteDto.getUser());
+        vote.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         vote.setRestaurant(restaurantRepo.findById(voteDto.getRestaurantName()).orElseThrow());
         vote.setDate(LocalDate.now());
 

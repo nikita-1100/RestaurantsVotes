@@ -28,6 +28,7 @@ INSERT INTO restaurant(name)
 VALUES ('Tokio city'),
        ('Eurasia'),
        ('Kebab-24'),
+       ('Kebab-1'),
        ('Mamaroma');
 
 INSERT INTO vote (date, restaurant_name,user_id)

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import restaurantsvotes.dto.DateDto;
 import restaurantsvotes.dto.VoteDto;
-import restaurantsvotes.entity.User;
 import restaurantsvotes.service.VoteService;
 
 @RestController
@@ -19,8 +18,7 @@ public class VoteController {
     private final VoteService voteService;
 
     @PostMapping("/user/votes")
-    public HttpStatus vote(@RequestBody VoteDto voteDto, @AuthenticationPrincipal User user){
-        voteDto.setUser(user);
+    public HttpStatus vote(@RequestBody VoteDto voteDto){
         voteService.save(voteDto);
         return HttpStatus.CREATED;
     }

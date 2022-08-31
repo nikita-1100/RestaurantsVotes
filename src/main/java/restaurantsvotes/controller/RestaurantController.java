@@ -1,6 +1,8 @@
 package restaurantsvotes.controller;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
+
+
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
@@ -29,6 +31,7 @@ public class RestaurantController {
         return restaurantRepo.findAll();
     }
 
+    @ApiOperation(value = "Kebab-1",response = Restaurant.class)
     @DeleteMapping("/admin/restaurants/{id}")
     public HttpStatus deleteRestaurant(@PathVariable String id){
         restaurantRepo.deleteById(id);

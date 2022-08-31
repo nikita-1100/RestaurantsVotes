@@ -10,6 +10,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "restaurant")
@@ -21,6 +23,8 @@ import javax.persistence.Table;
 public class Restaurant{
     @Id
     @Column(name = "name")
+    @NotBlank
+    @Size(min = 2, max = 120)
     private String name;
 }
 
