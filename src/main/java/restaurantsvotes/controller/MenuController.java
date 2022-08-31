@@ -26,7 +26,6 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 public class MenuController {
-
     private final MenuJpaRepository menuRepo;
 
     @GetMapping("/user/menus")

@@ -3,10 +3,7 @@ package restaurantsvotes.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import restaurantsvotes.dto.DateDto;
 import restaurantsvotes.dto.VoteDto;
 import restaurantsvotes.service.VoteService;
@@ -23,9 +20,9 @@ public class VoteController {
         return HttpStatus.CREATED;
     }
 
-    @GetMapping("/admin/votes/winner-restaurant")
-    public String getVotes(@RequestBody DateDto date){
-        return voteService.getRestaurantForDate(date);
+    @GetMapping("/admin/votes/winner-restaurant/{dateString}")
+    public String getVotes(@PathVariable String dateString){
+        return voteService.getRestaurantForDate(dateString);
     }
 
 

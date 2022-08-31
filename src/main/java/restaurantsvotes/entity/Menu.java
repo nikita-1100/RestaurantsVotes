@@ -23,11 +23,11 @@ import java.time.LocalDate;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "new"})
 @Table(name="menu", uniqueConstraints = {
-        @UniqueConstraint( columnNames = { "restaurant_name", "dish_name", "date" } ) })
+        @UniqueConstraint( columnNames = { "restaurant_id", "dish_name", "date" } ) })
 public class Menu extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_name", nullable = false)
+    @JoinColumn(name = "restaurant_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Restaurant restaurant;
 

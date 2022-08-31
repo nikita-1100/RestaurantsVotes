@@ -31,20 +31,18 @@ public class RestaurantController {
         return restaurantRepo.findAll();
     }
 
-    @ApiOperation(value = "Kebab-1",response = Restaurant.class)
     @DeleteMapping("/admin/restaurants/{id}")
-    public HttpStatus deleteRestaurant(@PathVariable String id){
+    public HttpStatus deleteRestaurant(@PathVariable int id){
         restaurantRepo.deleteById(id);
         return HttpStatus.CREATED;
     }
 
     @PutMapping("/admin/restaurants/{id}")
-    public HttpStatus updateMenu(@PathVariable String id){
+    public HttpStatus updateMenu(@RequestBody Restaurant restaurant, @PathVariable Integer id){
         if (restaurantRepo.findById(id).equals(Optional.empty()))
             return HttpStatus.CONFLICT;
-        restaurantRepo.save(new Restaurant(id));
+        restaurant.setId(id);
+        restaurantRepo.save(restaurant);
         return HttpStatus.CREATED;
     }
-
-
 }

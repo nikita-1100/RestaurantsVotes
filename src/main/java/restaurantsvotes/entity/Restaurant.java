@@ -20,19 +20,9 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor()
 @AllArgsConstructor
-public class Restaurant{
-    @Id
+public class Restaurant extends BaseEntity{
     @Column(name = "name")
     @NotBlank
     @Size(min = 2, max = 120)
     private String name;
 }
-
-
-
-
-//{
-//        "name":"Tom",
-//        "role":"false",
-//        "password":"INDIVIDUAL"
-//        }

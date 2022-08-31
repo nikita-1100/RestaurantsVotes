@@ -14,12 +14,12 @@ import java.time.LocalDate;
 public interface VoteJpaRepository extends JpaRepository<Vote,Integer> {
     String winnerInDateSqlQuery = "select name " +
             "from restaurant " +
-            "where name in " +
-                "(select restaurant_name " +
+            "where id in " +
+                "(select restaurant_id " +
                 "from vote " +
                 "where date=(:date) " +
-                "group by restaurant_name " +
-                "order by count(restaurant_name) desc " +
+                "group by restaurant_id " +
+                "order by count(restaurant_id) desc " +
                 "limit 1)";
 
     @Query(value = winnerInDateSqlQuery, nativeQuery = true)
