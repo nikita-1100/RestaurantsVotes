@@ -8,6 +8,7 @@ class RestaurantsVotesApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

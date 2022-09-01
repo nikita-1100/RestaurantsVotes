@@ -3,12 +3,15 @@ package restaurantsvotes;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
+import restaurantsvotes.util.JsonUtil;
+
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.function.BiConsumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class MatcherFactory {
 
@@ -52,26 +55,25 @@ public class MatcherFactory {
             iterableAssertion.accept(actual, expected);
         }
 
-//        public ResultMatcher contentJson(T expected) {
-//            return result -> assertMatch(JsonUtil.readValue(getContent(result), clazz), expected);
-//        }
+        public ResultMatcher contentJson(T expected) {
+            return result -> assertMatch(JsonUtil.readValue(getContent(result), clazz), expected);
+        }
 
-//        @SafeVarargs
-//        public final ResultMatcher contentJson(T... expected) {
-//            return contentJson(List.of(expected));
-//        }
+        @SafeVarargs
+        public final ResultMatcher contentJson(T... expected) {
+            return contentJson(List.of(expected));
+        }
 
-//        public ResultMatcher contentJson(Iterable<T> expected) {
-//            return result -> assertMatch(JsonUtil.readValues(getContent(result), clazz), expected);
-//        }
+        public ResultMatcher contentJson(Iterable<T> expected) {
+            return result -> assertMatch(JsonUtil.readValues(getContent(result), clazz), expected);
+        }
 
-//        public T readFromJson(ResultActions action) throws UnsupportedEncodingException {
-//            return JsonUtil.readValue(getContent(action.andReturn()), clazz);
-//        }
+        public T readFromJson(ResultActions action) throws UnsupportedEncodingException {
+            return JsonUtil.readValue(getContent(action.andReturn()), clazz);
+        }
 
         private static String getContent(MvcResult result) throws UnsupportedEncodingException {
             return result.getResponse().getContentAsString();
         }
     }
 }
-

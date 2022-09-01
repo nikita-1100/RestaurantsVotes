@@ -25,8 +25,19 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "REST API documentation",
                 version = "1.0",
-                description = "Приложение по дипломному проекту <a href='https://javaops.ru/view/topjava'>курса TopJava. Логин: <b>admin</b>  Пароль: <b>12345</b></a>",
-                contact = @Contact(url = "My github", name = "Dolbilov Nikita", email = "n1100@internet.ru")
+                description = "Приложение по дипломному проекту <a href='https://javaops.ru/view/topjava'>курса TopJava.</a><br>" +
+                        "<br> Логин: <b>admin</b>  Пароль: <b>12345</b> " +
+                        "<br>Логин: <b>user</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user2</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user3</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user4</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user5</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user6</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user7</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user8</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user9</b>  Пароль: <b>12345</b>" +
+                        "<br>Логин: <b>user10</b>  Пароль: <b>12345</b>",
+                contact = @Contact(url = "https://github.com/nikita-1100", name = "Dolbilov Nikita", email = "n1100@internet.ru")
         ),
         security = @SecurityRequirement(name = "basicAuth")
 )

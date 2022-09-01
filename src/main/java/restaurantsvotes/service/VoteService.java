@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import restaurantsvotes.dto.DateDto;
 import restaurantsvotes.dto.VoteDto;
 import restaurantsvotes.entity.User;
 import restaurantsvotes.entity.Vote;

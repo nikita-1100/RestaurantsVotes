@@ -2,9 +2,7 @@ package restaurantsvotes.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import restaurantsvotes.dto.DateDto;
 import restaurantsvotes.dto.VoteDto;
 import restaurantsvotes.service.VoteService;
 

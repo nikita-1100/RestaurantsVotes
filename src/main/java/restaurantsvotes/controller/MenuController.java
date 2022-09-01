@@ -14,10 +14,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import restaurantsvotes.dto.DateDto;
 import restaurantsvotes.entity.Menu;
 import restaurantsvotes.repository.MenuJpaRepository;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +29,8 @@ public class MenuController {
     private final MenuJpaRepository menuRepo;
 
     @GetMapping("/user/menus")
-    public List<Menu> getMenuByDate(@RequestBody DateDto dateDto){
-        return menuRepo.findMenuByDate(dateDto.getDate());
+    public List<Menu> getMenuByDate(){
+        return menuRepo.findMenuByDate(LocalDate.now());
     }
 
     @PostMapping("/admin/menus")
