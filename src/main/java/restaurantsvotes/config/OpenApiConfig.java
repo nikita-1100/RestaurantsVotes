@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "REST API documentation",
                 version = "1.0",
-                description = "Приложение по дипломному проекту курса TopJava.><br>" +
+                description = "Приложение по дипломному проекту курса TopJava.<br>" +
                         "<br> Логин: <b>admin</b>  Пароль: <b>12345</b> " +
                         "<br>Логин: <b>user</b>  Пароль: <b>12345</b>" +
                         "<br>Логин: <b>user2</b>  Пароль: <b>12345</b>" +
