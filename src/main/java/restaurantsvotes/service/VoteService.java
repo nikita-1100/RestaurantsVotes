@@ -29,7 +29,7 @@ public class VoteService {
         vote.setRestaurant(restaurantRepo.findById(voteDto.getRestaurantId()).orElseThrow());
         vote.setDate(LocalDate.now());
 
-        if (LocalDateTime.now().getHour()>19)
+        if (LocalDateTime.now().getHour()>11)
             return HttpStatus.CONFLICT;
         if (voteJpaRepository.findByUserAndDate(currentUser,LocalDate.now())==null)
             voteJpaRepository.save(vote);

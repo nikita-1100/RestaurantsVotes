@@ -43,4 +43,12 @@ public class Menu extends BaseEntity{
     @Column(name="date")
     @NotNull
     private LocalDate date;
+
+    public Menu(Integer id, Restaurant restaurant, String dishName, Integer price, LocalDate date) {
+        super(id);
+        this.restaurant = restaurant;
+        this.dishName = dishName;
+        this.price = price;
+        this.date = date;
+    }
 }

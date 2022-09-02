@@ -1,15 +1,5 @@
 package restaurantsvotes.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
@@ -18,9 +8,7 @@ import restaurantsvotes.entity.Menu;
 import restaurantsvotes.repository.MenuJpaRepository;
 
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -56,5 +44,4 @@ public class MenuController {
         menuRepo.save(menu);
         return HttpStatus.CREATED;
     }
-
 }

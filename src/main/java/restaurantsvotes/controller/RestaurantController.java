@@ -24,11 +24,14 @@ public class RestaurantController {
         return HttpStatus.CREATED;
     }
 
-
-
     @GetMapping("/admin/restaurants")
     public List<Restaurant> getAllRestaurants(){
         return restaurantRepo.findAll();
+    }
+
+    @GetMapping("/admin/restaurants/{id}")
+    public Restaurant get(@PathVariable int id){
+        return restaurantRepo.findById(id).get();
     }
 
     @DeleteMapping("/admin/restaurants/{id}")

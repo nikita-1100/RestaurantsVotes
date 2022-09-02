@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>RestaurantsVotes</artifactId>
@@ -18,28 +18,31 @@
         <springdoc.version>1.6.9</springdoc.version>
     </properties>
     <dependencies>
-
-        <!-- +++Добавил руками		-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.2.3.Final</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>2.7.2</version>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-
-
-
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
@@ -50,19 +53,6 @@
             <artifactId>springdoc-openapi-security</artifactId>
             <version>${springdoc.version}</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-
-
-
-
-        <!-- -Добавил руками		-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -82,7 +72,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--**********NIKITA***********-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

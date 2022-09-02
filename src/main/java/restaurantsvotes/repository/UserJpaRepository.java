@@ -7,7 +7,6 @@ import restaurantsvotes.entity.User;
 
 @Repository
 public interface UserJpaRepository extends JpaRepository<User, Integer> {
-    //User findById(int id);
     @Cacheable("users")
     User findByName(String username);
 }
