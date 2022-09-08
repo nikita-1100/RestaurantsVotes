@@ -13,6 +13,9 @@ import restaurantsvotes.service.UserService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+//    @Autowired
+//    BCryptPasswordEncoder encoder;
+
     @Autowired
     UserService userService;
 

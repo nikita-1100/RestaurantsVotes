@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import restaurantsvotes.entity.Menu;
+import restaurantsvotes.entity.MenuItem;
 import restaurantsvotes.repository.MenuJpaRepository;
 
 import java.time.LocalDate;
@@ -17,13 +17,13 @@ public class MenuController {
     private final MenuJpaRepository menuRepo;
 
     @GetMapping("/user/menus")
-    public List<Menu> getMenuByDate(){
+    public List<MenuItem> getMenuByDate(){
         return menuRepo.findMenuByDate(LocalDate.now());
     }
 
     @PostMapping("/admin/menus")
     @CacheEvict(value = "menu", allEntries = true)
-    public HttpStatus addMenu(@RequestBody Menu menu){
+    public HttpStatus addMenu(@RequestBody MenuItem menu){
         menuRepo.save(menu);
         return HttpStatus.CREATED;
     }
@@ -37,7 +37,7 @@ public class MenuController {
 
     @PutMapping("/admin/menus/{id}")
     @CacheEvict(value = "menu", allEntries = true)
-    public HttpStatus updateMenu(@RequestBody Menu menu, @PathVariable Integer id){
+    public HttpStatus updateMenu(@RequestBody MenuItem menu, @PathVariable Integer id){
         if (menuRepo.findById(id).equals(Optional.empty()))
             return HttpStatus.CONFLICT;
         menu.setId(id);

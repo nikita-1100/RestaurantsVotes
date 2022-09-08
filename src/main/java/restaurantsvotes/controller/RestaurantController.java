@@ -2,12 +2,9 @@ package restaurantsvotes.controller;
 
 
 
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import restaurantsvotes.entity.Menu;
 import restaurantsvotes.entity.Restaurant;
 import restaurantsvotes.repository.RestaurantJpaRepository;
 
