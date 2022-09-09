@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import restaurantsvotes.dto.VoteDto;
+import restaurantsvotes.entity.Restaurant;
 import restaurantsvotes.entity.User;
 import restaurantsvotes.entity.Vote;
 import restaurantsvotes.repository.RestaurantJpaRepository;
@@ -43,7 +44,7 @@ public class VoteService {
         return HttpStatus.CREATED;
     }
 
-    public String getRestaurantForDate(String dateString) {
+    public Integer getRestaurantForDate(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(dateString, formatter);
         return voteJpaRepository.getRestaurantForDate(date);

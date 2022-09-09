@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import restaurantsvotes.dto.VoteDto;
+import restaurantsvotes.entity.Restaurant;
 import restaurantsvotes.service.VoteService;
 
 @RestController
@@ -18,8 +19,8 @@ public class VoteController {
         return HttpStatus.CREATED;
     }
 
-    @GetMapping("/admin/vote/winner-restaurant/{dateString}")
-    public String getRestaurantForDate(@PathVariable String dateString){
+    @GetMapping("/admin/vote/winner-id/{dateString}")
+    public Integer getRestaurantForDate(@PathVariable String dateString){
         return voteService.getRestaurantForDate(dateString);
     }
 
