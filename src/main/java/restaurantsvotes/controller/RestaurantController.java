@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class RestaurantController {
     private final RestaurantJpaRepository restaurantRepo;
-    @PostMapping("/admin/restaurants")
+    @PostMapping("/admin/restaurant")
     public HttpStatus addRestaurant(@RequestBody Restaurant restaurant){
         restaurantRepo.save(restaurant);
         return HttpStatus.CREATED;
@@ -26,18 +26,18 @@ public class RestaurantController {
         return restaurantRepo.findAll();
     }
 
-    @GetMapping("/admin/restaurants/{id}")
+    @GetMapping("/admin/restaurant/{id}")
     public Restaurant get(@PathVariable int id){
         return restaurantRepo.findById(id).get();
     }
 
-    @DeleteMapping("/admin/restaurants/{id}")
+    @DeleteMapping("/admin/restaurant/{id}")
     public HttpStatus deleteRestaurant(@PathVariable int id){
         restaurantRepo.deleteById(id);
         return HttpStatus.CREATED;
     }
 
-    @PutMapping("/admin/restaurants/{id}")
+    @PutMapping("/admin/restaurant/{id}")
     public HttpStatus updateMenu(@RequestBody Restaurant restaurant, @PathVariable Integer id){
         if (restaurantRepo.findById(id).equals(Optional.empty()))
             return HttpStatus.CONFLICT;

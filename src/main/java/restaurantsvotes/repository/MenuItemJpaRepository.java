@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface MenuJpaRepository extends JpaRepository<MenuItem, Integer> {
-    @Cacheable("menu")
+public interface MenuItemJpaRepository extends JpaRepository<MenuItem, Integer> {
+    @Cacheable("menu_item")
     List<MenuItem> findMenuByDate(LocalDate date);
 }
