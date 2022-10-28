@@ -22,6 +22,7 @@ VALUES (1, 'USER'),
        (8, 'USER'),
        (9, 'USER'),
        (10, 'USER'),
+       (11, 'USER'),
        (11,'ADMIN');
 
 INSERT INTO restaurant(id,name)
@@ -60,7 +61,7 @@ VALUES ('2022-08-01',2,1),
        ('2022-08-05',3,8),
        ('2022-08-05',3,10);
 
-INSERT INTO menu(restaurant_id, dish_name, price, date)
+INSERT INTO menu_item(restaurant_id, dish_name, price, date)
 VALUES (1, 'chicken poke', 289, '2022-08-01'),
        (1, 'fried mushrooms', 349, '2022-08-01'),
        (1, 'fruit tea', 149, '2022-08-01'),
@@ -128,6 +129,13 @@ VALUES (1, 'chicken poke', 289, '2022-08-01'),
        (4, 'peperoni pizza', 240, '2022-08-04'),
        (4, 'salmon with vegetables', 460, '2022-08-04'),
        (4, 'homemade vine', 165, '2022-08-04'),
+
+       (1, 'chicken poke', 289, '2022-09-09'),
+       (1, 'fried mushrooms', 349, '2022-09-09'),
+       (1, 'fruit tea', 149, '2022-09-09'),
+       (4, 'peperoni pizza', 240, '2022-09-09'),
+       (4, 'salmon with vegetables', 460, '2022-09-09'),
+       (4, 'homemade vine', 165, '2022-09-09'),
 
        (1, 'chicken poke', 289, '2022-08-05'),
        (1, 'fried mushrooms', 349, '2022-08-05'),

@@ -1,11 +1,13 @@
 package restaurantsvotes.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import restaurantsvotes.dto.VoteDto;
+import restaurantsvotes.entity.Restaurant;
 import restaurantsvotes.entity.User;
 import restaurantsvotes.entity.Vote;
 import restaurantsvotes.repository.RestaurantJpaRepository;
@@ -21,6 +23,9 @@ public class VoteService {
     private final VoteJpaRepository voteJpaRepository;
     private final RestaurantJpaRepository restaurantRepo;
 
+    @Value("${restaurant-votes.stop-hour}")
+    private Integer stopHour;
+
     @Transactional
     public HttpStatus save(VoteDto voteDto) {
         Vote vote = new Vote();
@@ -29,8 +34,9 @@ public class VoteService {
         vote.setRestaurant(restaurantRepo.findById(voteDto.getRestaurantId()).orElseThrow());
         vote.setDate(LocalDate.now());
 
-        if (LocalDateTime.now().getHour()>11)
+        if (LocalDateTime.now().getHour()>stopHour-1)
             return HttpStatus.CONFLICT;
+
         if (voteJpaRepository.findByUserAndDate(currentUser,LocalDate.now())==null)
             voteJpaRepository.save(vote);
         else
@@ -38,7 +44,7 @@ public class VoteService {
         return HttpStatus.CREATED;
     }
 
-    public String getRestaurantForDate(String dateString) {
+    public Integer getRestaurantForDate(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(dateString, formatter);
         return voteJpaRepository.getRestaurantForDate(date);

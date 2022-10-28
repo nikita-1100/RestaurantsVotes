@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 @Repository
 public interface VoteJpaRepository extends JpaRepository<Vote,Integer> {
-    String winnerInDateSqlQuery = "select name " +
+    String winnerInDateSqlQuery = "select id " +
             "from restaurant " +
             "where id in " +
                 "(select restaurant_id " +
@@ -23,7 +23,7 @@ public interface VoteJpaRepository extends JpaRepository<Vote,Integer> {
                 "limit 1)";
 
     @Query(value = winnerInDateSqlQuery, nativeQuery = true)
-    String getRestaurantForDate(LocalDate date);
+    Integer getRestaurantForDate(LocalDate date);
 
     Vote findByUserAndDate(User user, LocalDate date);
 

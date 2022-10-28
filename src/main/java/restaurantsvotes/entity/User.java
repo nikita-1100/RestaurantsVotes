@@ -15,7 +15,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor()
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "new"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "new","enabled", "username",
+        "credentialsNonExpired", "accountNonExpired", "accountNonLocked", "authorities"})
 public class User extends BaseEntity implements UserDetails {
     @Column(name = "name")
     private String name;

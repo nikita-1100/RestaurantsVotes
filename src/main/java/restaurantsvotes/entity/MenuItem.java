@@ -22,9 +22,9 @@ import java.time.LocalDate;
 @ToString
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "new"})
-@Table(name="menu", uniqueConstraints = {
+@Table(name="menu_item", uniqueConstraints = {
         @UniqueConstraint( columnNames = { "restaurant_id", "dish_name", "date" } ) })
-public class Menu extends BaseEntity{
+public class MenuItem extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
@@ -44,11 +44,13 @@ public class Menu extends BaseEntity{
     @NotNull
     private LocalDate date;
 
-    public Menu(Integer id, Restaurant restaurant, String dishName, Integer price, LocalDate date) {
+    public MenuItem(Integer id, Restaurant restaurant, String dishName, Integer price, LocalDate date) {
         super(id);
         this.restaurant = restaurant;
         this.dishName = dishName;
         this.price = price;
         this.date = date;
     }
+
+
 }
